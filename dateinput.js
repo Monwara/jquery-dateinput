@@ -855,14 +855,39 @@
           });
 
           $input.on('keydown', function(e) {
-            if (e.which === 27) { // Esc
-              if (!instance) return;
-              e.stopPropagation();
+            function shift(dir) {
+              var d = new Date($input.val());
+
+              if (d.toString() === 'Invalid Date') return;
+
               e.preventDefault();
-              instance.fadeOut(200, function() {
-                instance.remove();
-                instance = undefined;
-              });
+              e.stopPropagation();
+
+              d = shiftMonths(d, dir);
+              $input.val(dateFormat(d, opts.format, opts.labels));
+              drawCalendar(d);
+              selectDate(d);
+            }
+
+            switch (e.which) {
+              case 27: // Esc
+                if (!instance) return;
+                e.stopPropagation();
+                e.preventDefault();
+                instance.fadeOut(200, function() {
+                  instance.remove();
+                  instance = undefined;
+                });
+                break;
+
+              case 33: // PgUp
+                shift(-1);
+                break;
+
+              case 34: // PgDn
+                shift(1);
+                break;
+
             }
           });
 
