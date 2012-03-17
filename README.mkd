@@ -163,7 +163,8 @@ There are two known issues:
  + When using pop-up widget, if the input is focued by clicking into it, the
    month that is shown is the inital month, and not the one that contains the 
    selection. It works correctly if keyboard is used to focus the intput.
- + With `noPast` option, you can still select the past dates.
+ + With `noPast` option, you can still select the past dates. (Fixed in 
+   master.)
 
 Bugs
 ----
