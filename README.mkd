@@ -22,6 +22,11 @@ The other not-so-surprising calendar features includes:
    field, and when user uses keyboard navigation to tab out of the field.
  + Fully translatable.
 
+Demo
+----
+
+Check out the [demo](http://herdhound.github.com/jquery-dateinput/).
+
 Installation
 ------------
 
