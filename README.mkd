@@ -10,6 +10,7 @@ widget plugin. Some of the key features include:
  + Lightweight (3Kb minified and gzipped).
  + When used as a pop-up widget, it automatically updates the calendar each
    time user types something into the input field.
+ + Some keyboard navigation (and more in development)
 
 The other not-so-surprising calendar features includes:
 
@@ -62,6 +63,20 @@ Well, not really 'advanced', but you can pass in some customization options:
         return true; // allow the default callback to execute
       }
     });
+
+Using the widget
+----------------
+
+The calendar widget is pretty self-explanatory. You click on dates to select
+them, and inputs are automatically populated. 
+
+There are three keyboard shortcuts you might want to be aware of. 
+
+Pressing __Esc__ when pop-up calendar is open will close it. 
+
+Pressing __PageUp__, and __PageDown__ keys when pop-up calendar is open and
+field is focused will shift the month by -1 and +1 respectively, and will also
+select the shifted date.
 
 Options
 -------
