@@ -89,7 +89,8 @@ Following options are available:
    receives two arguments, the year to which the newly displayed month belongs,
    and the month (0-12). (default: none)
 
-Date formats ------------
+Date formats 
+------------
 
 When using the `format` option, you can supply any string as format.  Special
 charactes prefixed with `%` can be used to modify date format.  Those are:
@@ -135,6 +136,12 @@ are constructed according to these rules:
    maps to 'October')
  + Short versions have 's'  prefix (applies only to week names.  (e.g., 'smon'
    maps to 'M')
+
+Bugs
+----
+
+Report all bugs in the 
+[Github issue tracker](https://github.com/HerdHound/jquery-dateinput/issues).
 
 License
 -------
