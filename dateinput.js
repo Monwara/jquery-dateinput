@@ -675,7 +675,7 @@
 
           } else {
             // Create a new widget instance
-            instance = $(calendarHTML(date));
+            instance = $(calendarHTML(d || date));
             instance.displayMonth = date.getMonth() + 1;
             instance.displayYear = date.getFullYear();
 
@@ -793,7 +793,12 @@
           $input.on('focus', function(e) {
             // Draw instance and attach to document body
             if (instance) return true;
-            drawCalendar($input.val() ? new Date($input.val()) : null);
+
+            (function(d) {
+              drawCalendar(d);
+              selectDate(d);
+            }($input.val() ? new Date($input.val()) : null));
+
             instance.appendTo(document.body);
             instance.css({
               position: 'absolute',
@@ -812,19 +817,6 @@
             var inputH = $input.outerHeight();
             var winW = $(window).width();
             var winH = $(window).height();
-
-            console.log('~~~', {
-              doffx: docOffsetX,
-              doffy: docOffsetY,
-              calW: calW,
-              calH: calH,
-              inputX: inputX,
-              inputY: inputY,
-              inputW: inputW,
-              inputH: inputH,
-              winW: winW,
-              winH: winH
-            })
 
             var x = 0;
             var y = 0;
@@ -863,9 +855,10 @@
           });
 
           $input.on('keydown', function(e) {
-            if (e.which === 27) {
-              // Pressed Esc
+            if (e.which === 27) { // Esc
               if (!instance) return;
+              e.stopPropagation();
+              e.preventDefault();
               instance.fadeOut(200, function() {
                 instance.remove();
                 instance = undefined;
@@ -876,11 +869,35 @@
           $input.on('keyup', function(e) {
             if (!instance) return;
 
-            var d = new Date($input.val());
-            if (d.toString() === 'Invalid Date') {
-              selectDate();
-            } else {
-              drawCalendar(d);
+            switch (e.which) {
+              // Ignore some of the more common special keys
+              case 8:
+              case 9:
+              case 13:
+              case 16:
+              case 17:
+              case 18:
+              case 20:
+              case 27:
+              case 32:
+              case 35:
+              case 36:
+              case 37:
+              case 38:
+              case 39:
+              case 40:
+              case 45:
+              case 144:
+                return;
+                break;
+
+              default:
+                var d = new Date($input.val());
+                if (d.toString() === 'Invalid Date') {
+                  selectDate();
+                } else {
+                  drawCalendar(d);
+                }
             }
           });
         }
