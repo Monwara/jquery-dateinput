@@ -704,6 +704,12 @@
               e.stopPropagation();
               e.preventDefault();
 
+              if ($(this).hasClass(PAST_CLASS)) {
+                if (blurTimeout) clearTimeout(blurTimeout);
+                $input.focus();
+                return;
+              }
+
               var cellDate = new Date(
                 $(this).data('year'),
                 $(this).data('month') - 1,
