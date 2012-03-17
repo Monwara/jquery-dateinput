@@ -41,6 +41,15 @@ so I didn't think it was necessary to include anything. If you want a starting
 point, though, you have a decent CSS in the 
 [demo](http://herdhound.github.com/jquery-dateinput/), so check that out.
 
+Release notes
+-------------
+
+ + 0.0.2
+   - Fixed all outstanding issues
+   - Added PageUp/PageDown month navigation
+ + 0.0.1
+   - First release
+
 Basic usage
 -----------
 
@@ -178,9 +187,8 @@ There are two known issues:
  + When using pop-up widget, if the input is focued by clicking into it, the
    month that is shown is the inital month, and not the one that contains the 
    selection. It works correctly if keyboard is used to focus the intput.
-   (Fixed in master.)
- + With `noPast` option, you can still select the past dates. (Fixed in 
-   master.)
+   (Fixed in 0.0.2)
+ + With `noPast` option, you can still select the past dates. (Fixed 0.0.2)
 
 Bugs
 ----
