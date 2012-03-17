@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <title>dateInput test</title>
+    <style>
+      .dateinput-container {
+        border: 1px solid #555;
+        border-radius: 3px;
+        font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
+        font-size: 12px;
+        background: #333; /* Old browsers */
+      }
+
+      .dateinput-inner {
+        padding: 6px;
+      }
+
+      .dateinput-monthbar {
+        height: 36px;
+        position: relative;
+      }
+
+      .dateinput-monthbar span {
+        display: table;
+        position: absolute;
+      }
+
+      a.dateinput-nextmonth,
+      a.dateinput-prevmonth {
+        background: #555;
+        display: table-cell;
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        color: white;
+        text-decoration: none;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      span.dateinput-prevmonth {
+        top: 2px;
+        left: 2px;
+      }
+
+      span.dateinput-nextmonth {
+        top: 2px;
+        right: 2px;
+      }
+
+      span.dateinput-monthbar-month {
+        width: 100%;
+        text-align: center;
+        font-size: 120%;
+        color: #aaa;
+        padding-top: 4px;
+      }
+
+      .dateinput-weekname,
+      .dateinput-calendar-cell {
+        padding: 3px;
+        display: inline-block;
+        border-bottom: 1px solid #777;
+        width: 22px;
+        text-align: center;
+      }
+
+      .dateinput-weekname {
+        color: #999;
+      }
+
+      .dateinput-calendar-cell {
+        color: #888;
+      }
+
+      .dateinput-sunday {
+        background: #444;
+      }
+
+      .dateinput-weekname {
+        text-transform: uppercase;
+      }
+
+      .dateinput-calendar-cell {
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .dateinput-today {
+        font-weight: bold;
+        color: #aaa;
+      }
+
+      .dateinput-selected {
+        background: #333333; /* Old browsers */
+        background: -moz-linear-gradient(top, #333333 0%, #777777 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#777777)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #333333 0%,#777777 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #333333 0%,#777777 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #333333 0%,#777777 100%); /* IE10+ */
+        background: linear-gradient(top, #333333 0%,#777777 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#777777',GradientType=0 ); /* IE6-9 */
+        color: #fff;
+        font-weight: bold;
+        border-bottom: 2px solid #fff;
+        padding-bottom: 2px;
+      }
+
+      .dateinput-calendar-othermonth {
+        color: #555;
+      }
+
+      .dateinput-past {
+        background: #444;
+        color: #555;
+        cursor: default;
+      }
+
+      .dateinput-calendar-cell:hover {
+        background: #666;
+      }
+
+      .dateinput-past:hover {
+        background: #444;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>jQuery dateInput</h1>
+    <p>This is the demo page for jQuery dateInput plugin. For the complete documentation, visit the <a href="https://github.com/HerdHound/jquery-dateinput">GitHub repository page</a>.</p>
+    <form>
+      <h2>Inline calendar example</h2>
+      <p>Left uses <code>sundayFirst:true</code> (default), while the rigth one uses <code>sundayFirst:false</code></p>
+      <p>
+      <input name="test1" id="test1" value="">
+      <input name="test2" id="test2" value="">
+      </p>
+      <h2>Pop-up with <code>autoClose</code> and <code>noPast</code> enabled</h2>
+      <p>Note that the calendar (while open) reacts to changes in the value of the text input as user types in it.</p>
+      <p>
+      <input name="test3" id="test3" placeholder="e.g., 21 Jun 2012">
+      <input name="next" id="next" placeholder="focuses here after date input">
+      </p>
+    </form>
+    <h2>The code</h2>
+    <pre><code>$(document).ready(function() {
+  $('#test1').dateInput({inline: true});
+  $('#test2').dateInput({inline: true, sundayFirst: false});
+  $('#test3').dateInput({noPast: true, autoClose: true});
+});</code></pre>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/HerdHound/jquery-dateinput/master/dateinput-0.0.1.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#test1').dateInput({inline: true});
+        $('#test2').dateInput({inline: true, sundayFirst: false});
+        $('#test3').dateInput({noPast: true, autoClose: true});
+      });
+    </script>
+  </body>
+</head>
