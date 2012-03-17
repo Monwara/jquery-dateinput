@@ -35,6 +35,11 @@ the list of dependencies. You know the routine if you are going down this road.
 
 Otherwise, just include it as a script tag below jQuery.
 
+The CSS for the datepicker is _not_ included. I think it's very easy to style,
+so I didn't think it was necessary to include anything. If you want a starting
+point, though, you have a decent CSS in the 
+[demo](http://herdhound.github.com/jquery-dateinput/), so check that out.
+
 Basic usage
 -----------
 
