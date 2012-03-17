@@ -1,0 +1,162 @@
+jQuery dateInput
+================
+
+The aptly named jQuery dateInput is a [jQuery](http//jquery.com/) calendar
+widget plugin. Some of the key features include:
+
+ + Can be used as AMD module with RequireJS.
+ + Uses ES5 features (might not work in older browsers).
+ + Does not use tables to render the calendar cells (web-designer-friendly!).
+ + Lightweight (3Kb minified and gzipped).
+ + When used as a pop-up widget, it automatically updates the calendar each
+   time user types something into the input field.
+
+The other not-so-surprising calendar features includes:
+
+ + Can be used as a calendar widget! (No, seriously...)
+ + Completely styled using CSS.
+ + Can auto-close on selection or remain open.
+ + Can prevent selection of dates in the past.
+ + Can be inline widget or pop-up when input is focused.
+ + Handles blur event on the input field both when user clicks outside the
+   field, and when user uses keyboard navigation to tab out of the field.
+ + Fully translatable.
+
+Installation
+------------
+
+You can include it into your AMD-based project by requiring it or adding it to
+the list of dependencies. You know the routine if you are going down this road.
+
+Otherwise, just include it as a script tag below jQuery.
+
+Basic usage
+-----------
+
+After selecting an input, just call `dateInput`:
+
+    $('#my-date-input').dateInput();
+
+Advanced usage
+--------------
+
+Well, not really 'advanced', but you can pass in some customization options:
+
+    $('#my-date-input').dateInput({
+      noPast: true, // does not allow selection of past dates
+      zindex: 2147483647, // sets z-index to maximum value available
+      autoClose: true, // automatically close after selection
+      click: function(v) {
+        // This is called when user selects a date
+        alert('You clicked on ' + v);
+        return true; // allow the default callback to execute
+      }
+    });
+
+Options
+-------
+
+Following options are available:
+
+ + `format` (String) The date format used to populate the input when calendar
+   cell is clicked. The format strings are more or less the same ones used by
+   `strftime` from C and Python. (default: '%D %b %Y')
+ + `autoClose` (Boolean) Used with pop-up version, automatically closes the
+   widget once user selects a date. (default: false)
+ + `inline` (Boolean) Whether to replace the input, or pop-up when input is
+   focused. The inline version creates a new hidden input that replaces the
+   original input, and copies `id`, `name`, and `value` attributes from it.
+   (default: false)
+ + `noPast` (Boolean) Do not allow selection of dates in the past.  (default:
+   false)
+ + `startDate` (Date) Date at which to initiate the calendar if the input
+   control has no value. Only month and year are used from the date, so you can
+   set day and time to any value. (default: current date)
+ + `sudayFirst` (Boolean) Whether Sunday will be displayed as first day of the
+   week or not (default: true)
+ + `offset` (Number) Vertical offset from the input in px. (default: 4)
+ + `zindex` (Any valid CSS z-index value) Sets the z-index value for calendar
+   widget if supplied. (default: null)
+ + `fadeOut` (Number) Fade out length in ms when closing pop-up calendar.
+   (default: 200)
+ + `labels` (Object) Key-value pair of label identifiers and labels.  This
+   defaults to English labels, and you can supply a traslated version of labels
+   in any language. (default: English labels)
+ + `click` (Function) Executed every time a date is selected. Takes the date
+   object as its only argument, which matches the selected date. It should
+   return `true` if you also want to keep the default behavior. (default: none)
+ + `monthChange` (Function) Executed every time a month is switched. It
+   receives two arguments, the year to which the newly displayed month belongs,
+   and the month (0-12). (default: none)
+
+Date formats ------------
+
+When using the `format` option, you can supply any string as format.  Special
+charactes prefixed with `%` can be used to modify date format.  Those are:
+
+ + `%a`: Abbreviated week day name (e.g., Sun)
+ + `%A`: Full week day name (e.g., Sunday)
+ + `%b`: Abbreviated month name (e.g., Aug)
+ + `%B`: Full month name (e.g., August)
+ + `%c`: Locale-specific format (uses `Date.prototype.toLocaleString()`)
+ + `%d`: 2-digit date (e.g., 05)
+ + `%D`: Non-zero-padded date (e.g., 5)
+ + `%H`: 2-digit hour in 24-hour format (e.g., 18)
+ + `%i`: Non-zero-padded hour in 12-hour format (e.g., 6)
+ + `%I`: Zero-padded hour in 12-hour format (e.g., 06)
+ + `%m`: 2-digit month (e.g., 08)
+ + `%M`: Zero-padded minutes (e.g., 06)
+ + `%N`: Non-zero-padded minutes (e.g., 6)
+ + `%p`: 'am' / 'pm'
+ + `%s`: Non-zero-padded seconds (e.g., 8)
+ + `%S`: Zero-padded seconds (e.g., 08)
+ + `%w`: 0-indexed week day
+ + `%y`: 2-digit year (without century, e.g., 13)
+ + `%Y`: 4-digit year (e.g., 2013)
+ + `%x`: Same as %c, implemented for compatibility reasons
+ + `%X`: Same as %c, implemented for compatibility reasons
+ + `%z`: Timezone offset
+ + '%%': Literal '%' character
+
+Note that week day / month names are not hard-coded. You can change the strings
+used for names by supplying alternatives as `label` option.
+
+Labels
+------
+
+jQuery dateInput is fully translatable. The key-value pair of label identifiers
+and translated strings can be passed in as `label` option.  Label identifiers
+are constructed according to these rules:
+
+ + Each identifier is a 3-letter abbreviation (e.g., 'mon', 'oct')
+ + Default 3-letter abbreviation is the abbreviated version (e.g., 'mon' maps
+   to 'Mon', and 'oct' maps to 'Oct').
+ + Long versions have a 'l' prefix. (e.g., 'lmon' maps to 'Monday', and 'loct'
+   maps to 'October')
+ + Short versions have 's'  prefix (applies only to week names.  (e.g., 'smon'
+   maps to 'M')
+
+License
+-------
+
+Released under MIT license.
+
+Copyright (c)2012, by Monwara LLC. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
