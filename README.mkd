@@ -10,7 +10,7 @@ widget plugin. Some of the key features include:
  + Lightweight (3Kb minified and gzipped).
  + When used as a pop-up widget, it automatically updates the calendar each
    time user types something into the input field.
- + Some keyboard navigation (and more in development)
+ + Keyboard friendly (complete keyboard navigation).
 
 The other not-so-surprising calendar features includes:
 
