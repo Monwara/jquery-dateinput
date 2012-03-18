@@ -87,6 +87,9 @@ Pressing __PageUp__, and __PageDown__ keys when pop-up calendar is open and
 field is focused will shift the month by -1 and +1 respectively, and will also
 select the shifted date.
 
+Combination of __Ctrl and arrow keys__ is used to navigate the calendar in
+pop-up mode.
+
 Options
 -------
 
@@ -171,10 +174,15 @@ are constructed according to these rules:
  + Short versions have 's'  prefix (applies only to week names.  (e.g., 'smon'
    maps to 'M')
 
+One more label is included that does not fall under the rules outlined above.
+The 'help' key maps to a short help text that appears at the very bottom of the
+calendar when calendar is used as a pop-up widget. By default, this text reads
+'Use Ctrl + arrow keys to navigate'. You can, of course, change that to
+anything you like.
+
 Roadmap
 -------
 
- + Keyboard navigation of the calendar when input is focused
  + Scroll to change month
  + General optimization
  + Maybe include a few different predefined CSS 'skins' just for kicks
