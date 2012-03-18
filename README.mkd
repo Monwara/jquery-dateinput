@@ -15,6 +15,7 @@ widget plugin. Some of the key features include:
  + When used as a pop-up widget, it automatically updates the calendar each
    time user types something into the input field.
  + Keyboard friendly (complete keyboard navigation).
+ + strftime-like date formatting.
 
 The other not-so-surprising calendar features includes:
 
