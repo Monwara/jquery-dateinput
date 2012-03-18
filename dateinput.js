@@ -341,6 +341,30 @@
         );
       }
 
+      // Fill the calendar up to six weeks
+      (function addMore(weeksRemaining, startDay, idx) {
+        if (!weeksRemaining) return;
+
+        startDay++;
+        weeks[idx] = [];
+
+        for (i = 0; i < 7; i++) {
+          startDay += i;
+          weeks[idx].push(
+            tOtherMonthCell.
+            replace('$PAST', noPast && isPast(nextY, nextM, i) ? PAST_CLASS : '').
+            replace('$TODAY', isToday(nextY, nextM, i) ? TODAY_CLASS : '').
+            replace('$YEAR', nextY).
+            replace('$MONTH', nextM).
+            replace('$DATE', startDay).
+            replace('$LABEL', startDay)
+          );
+        }
+
+        addMore(6 - weeks.length, startDay, weeks.length);
+      }(6 - weeks.length, daysRemaining, weeks.length));
+
+
       // Add sunday classes for each week
       var sundayPos = sundayFirst ? 0 : 6;
       weeks = weeks.map(function(week) {
