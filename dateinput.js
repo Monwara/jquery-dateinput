@@ -912,11 +912,25 @@
             }
 
             switch (e.which) {
+              case 13: // Enter
+                if (!instance) return;
+
+                // Close the calendar if any
+                e.preventDefault();
+                e.stopPropagation();
+                instance.fadeOut(opts.fadeOut, function() {
+                  instance.remove();
+                  instance = null;
+                });
+                break;
+
               case 27: // Esc
                 if (!instance) return;
+
+                // Close the instance
                 e.stopPropagation();
                 e.preventDefault();
-                instance.fadeOut(200, function() {
+                instance.fadeOut(opts.fadeOut, function() {
                   instance.remove();
                   instance = undefined;
                 });
@@ -945,7 +959,6 @@
               case 40: // Down
                 shiftDate(7);
                 break;
-
             }
           });
 
