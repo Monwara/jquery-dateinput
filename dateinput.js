@@ -485,6 +485,13 @@
      *    calendar widget if supplied. (default: null)
      *  + `fadeOut` (Number) Fade out length in ms when closing pop-up 
      *    calendar. (default: 200)
+     *  + `click` (Function) Executed every time a date is selected. Takes the
+     *    date object as its only argument, which matches the selected date. It
+     *    should return `true` if you also want to keep the default behavior.
+     *    (default: none)
+     *  + `monthChange` (Function) Executed every time a month is switched. It
+     *    receives two arguments, the year to which the newly displayed month
+     *    belongs, and the month (0-12). (default: none)
      *  + `labels` (Object) Key-value pair of label identifiers and labels. 
      *    This defaults to English labels, and you can supply a traslated
      *    version of labels in any language. (default: English labels)
@@ -933,6 +940,9 @@
               var d = new Date($input.val());
               if (d.toString() === 'Invalid Date') return;
               redraw(shiftMonths(d, dir));
+              if (typeof opts.monthChange === 'function') {
+                opts.monthChange(d.getFullYear(), d.getMonth() + 1);
+              }
             }
 
             // Handle Ctrl+Arrow shortcuts
