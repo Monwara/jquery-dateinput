@@ -748,6 +748,18 @@
               instance.css('display', 'inline-block');
             }
 
+            instance.on('contextmenu', function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              var t = getToday();
+              drawCalendar(t);
+              selectDate(t);
+              $input.val(dateFormat(t, opts.format, opts.labels));
+              if (blurTimeout) clearTimeout(blurTimeout);
+              $input.focus();
+            });
+
             // Date selection
             instance.on('click', '.dateinput-calendar-cell', function(e) {
               e.stopPropagation();
