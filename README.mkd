@@ -189,6 +189,11 @@ calendar when calendar is used as a pop-up widget. By default, this text reads
 'Use Ctrl + arrow keys to navigate'. You can, of course, change that to
 anything you like.
 
+Keep in mind that you can also partially override labels. For example, if you
+want to change just the short week day names, you can just supply the `labels`
+object with those names. Any labels that are not present in the `labels` object
+you are passing as part of the options will retain their default values.
+
 Roadmap
 -------
 
