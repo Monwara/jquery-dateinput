@@ -50,7 +50,7 @@
       '<a class="dateinput-nextmonth" href="JavaScript:void(0)">&gt;</a>',
       '</span>',
 
-      '</div>',
+      '</div>', // Closes monthbar
       
       '<div class="dateinput-calendar">' +
 
@@ -60,7 +60,11 @@
 
       '<div class="dateinput-calendar-weeks">$CALENDAR</div>',
 
-      '</div></div></div>' // closes calendar, and inner and outer containers
+      '</div>', // Closes calendar
+
+      '<div class="dateinput-help">$HELP</div>',
+
+      '</div></div>' // Closes inner and outer containers
     ].join('');
 
     // CONSTANTS
@@ -78,6 +82,7 @@
     var MNTH = 'jan feb mar apr may jun jul aug sep oct nov dec'.split(' ');
     var LDY = 'lsun lmon ltue lwed lthu lfri lsat'.split(' ');
     var DY = 'sun mon tue wed thu fri sat'.split(' ');
+    var DAYMS = 24 * 60 * 60 * 1000;
 
     // UTILITY FUNCTIONS
     
@@ -170,6 +175,20 @@
       var mon0AD = date.getFullYear() * 12 + (date.getMonth() + 1);
       var newMon0AD = mon0AD + months;
       return new Date(~~(newMon0AD / 12), (newMon0AD % 12) -1, date.getDate());
+    }
+
+    /**
+     * Shift date by specified number of days
+     *
+     * @param {Date} date Date to shift
+     * @param {Number} days Integer number of days (positive or negative)
+     * @return {Date} Shifted date
+     */
+    function shiftDays(date, days) {
+      // Reset time to 0:00:00.000
+      date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      date.setTime(date.getTime() + (days * DAYMS));
+      return date;
     }
 
     /**
@@ -560,7 +579,8 @@
             'lsep': 'September',
             'loct': 'October',
             'lnov': 'November',
-            'ldec': 'December'
+            'ldec': 'December',
+            'help': 'Use Ctrl + arrow keys to navigate'
           }
         };
 
@@ -675,7 +695,10 @@
 
           } else {
             // Create a new widget instance
-            instance = $(calendarHTML(d || date));
+            instance = $(
+              calendarHTML(d || date).
+                replace('$HELP', opts.inline ? '' : opts.labels.help)
+            );
             instance.displayMonth = date.getMonth() + 1;
             instance.displayYear = date.getFullYear();
 
@@ -855,18 +878,37 @@
           });
 
           $input.on('keydown', function(e) {
-            function shift(dir) {
-              var d = new Date($input.val());
 
-              if (d.toString() === 'Invalid Date') return;
-
+            // Helper function to redraw the calendar with new date
+            function redraw(d) {
+              if (!instance) return;
               e.preventDefault();
               e.stopPropagation();
 
-              d = shiftMonths(d, dir);
               $input.val(dateFormat(d, opts.format, opts.labels));
               drawCalendar(d);
               selectDate(d);
+            }
+
+            // Handle PgUp/PgDn keys
+            function shift(dir) {
+              var d = new Date($input.val());
+              if (d.toString() === 'Invalid Date') return;
+              redraw(shiftMonths(d, dir));
+            }
+
+            // Handle Ctrl+Arrow shortcuts
+            function shiftDate(days) {
+              if (e.ctrlKey && !e.shiftKey && !e.altKey && !e.modKey) {
+                var d = new Date($input.val());
+                if (d.toString() === 'Invalid Date') {
+                  redraw(getToday());
+                } else {
+                  var sd = shiftDays(d, days);
+                  if (opts.noPast && sd - getToday() < 0) return;
+                  redraw(sd);
+                }
+              }
             }
 
             switch (e.which) {
@@ -886,6 +928,22 @@
 
               case 34: // PgDn
                 shift(1);
+                break;
+
+              case 37: // Left
+                shiftDate(-1);
+                break;
+              
+              case 38: // Up
+                shiftDate(-7);
+                break;
+
+              case 39: // Right
+                shiftDate(1);
+                break;
+
+              case 40: // Down
+                shiftDate(7);
                 break;
 
             }
