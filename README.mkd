@@ -41,9 +41,12 @@ so I didn't think it was necessary to include anything. If you want a starting
 point, though, you have a decent CSS in the 
 [demo](http://herdhound.github.com/jquery-dateinput/), so check that out.
 
-Release notes
--------------
+Changelog
+---------
 
+ + in development
+   - Added Ctrl + arrow key navigation
+   - Added 'help' label
  + 0.0.2
    - Fixed all outstanding issues
    - Added PageUp/PageDown month navigation
