@@ -52,6 +52,7 @@ Changelog
  + in development
    - Added Ctrl + arrow key navigation
    - Added 'help' label
+   - Pressing Enter closes pop-up calendar
  + 0.0.2
    - Fixed all outstanding issues
    - Added PageUp/PageDown month navigation
