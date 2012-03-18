@@ -185,9 +185,11 @@
      * @return {Date} Shifted date
      */
     function shiftDays(date, days) {
-      // Reset time to 0:00:00.000
-      date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      // Use 12pm as time, to avoid mixup due to daylight savings
+      date = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12);
       date.setTime(date.getTime() + (days * DAYMS));
+      // Reset hours back to 12am
+      date.setHours(0);
       return date;
     }
 
@@ -906,6 +908,7 @@
                 } else {
                   var sd = shiftDays(d, days);
                   if (opts.noPast && sd - getToday() < 0) return;
+                  console.log(sd);
                   redraw(sd);
                 }
               }
