@@ -1,0 +1,36 @@
+{
+    "name": "jQuery dateInput",
+    "version": "0.0.2",
+    "title": "jQuery.fn.dateInput",
+    "author": {
+        "name": "Monwara LLC"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "MIT-LICENSE.txt"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.7"
+    },
+    "description": "Calendar-based date input for form fields for modern browsers and modern jQuery.",
+    "keywords": [
+        "date",
+        "calendar",
+        "form",
+        "input"
+    ],
+    "homepage": "https://github.com/HerdHound/jquery-dateinput",
+    "maintainers": [
+        {
+            "name": "Branko Vukelic",
+            "email": "branko@herdhound.com"
+            "url": "https://github.com/HerdHound"
+        }
+    ],
+    "demo": "http://herdhound.github.com/jquery-dateinput",
+    "files": [
+        "jquery.color.js"
+    ]
+}
