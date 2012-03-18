@@ -1,6 +1,10 @@
 jQuery dateInput
 ================
 
+Before you go on, this plugin has nothing to do with the similarly named
+[jQuery Date Input](http://jonathanleighton.com/projects/date-input/), nor any
+of the forks.
+
 The aptly named jQuery dateInput is a [jQuery](http//jquery.com/) calendar
 widget plugin. Some of the key features include:
 
