@@ -49,7 +49,7 @@ point, though, you have a decent CSS in the
 Changelog
 ---------
 
- + in development
+ + 0.0.3
    - Added Ctrl + arrow key navigation
    - Added 'help' label
    - Pressing Enter closes pop-up calendar
