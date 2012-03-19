@@ -134,9 +134,11 @@ Following options are available:
  + `positon` (Function) If present, called each time pop-up widget is
    about to be positioned. It receives an object with three properties, 
    which are also objects:
+   
    - `input` with `left`, `top`, `width`, and `height` properties
    - `calendar` with `width`, and `height` properties
    - `viewport` with `width`, and `height` properties
+   
    Note that `left` and `top` coordinates of the `input` are relative 
    to the viewport and not the document or parent container. The 
    `position` function needs to return an object with `left` and `top`
