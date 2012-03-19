@@ -497,8 +497,8 @@
      *    which are also objects:
      *    
      *    - `input` with `left`, `top`, `width`, and `height` properties
-     *    - `calendar` with `width`, and `height` properties
-     *    - `viewport` with `width`, and `height` properties
+     *    - `calendar` with `left`, `top`, `width`, and `height` properties
+     *    - `viewport` with `left`, `top`, `width`, and `height` properties
      *
      *    Note that `left` and `top` coordinates of the `input` are relative 
      *    to the viewport and not the document or parent container. The 
@@ -927,10 +927,14 @@
                   height: inputH
                 },
                 calendar: {
+                  left: x,
+                  top: y,
                   width: calW,
                   height: calH
                 },
                 viewport: {
+                  left: docOffsetX,
+                  top: docOffsetY,
                   width: winW,
                   height: winH
                 }
