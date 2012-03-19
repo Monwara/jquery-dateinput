@@ -492,6 +492,16 @@
      *  + `monthChange` (Function) Executed every time a month is switched. It
      *    receives two arguments, the year to which the newly displayed month
      *    belongs, and the month (0-12). (default: none)
+     *  + `positon` (Function) If present, called each time pop-up widget is
+     *    about to be positioned. It receives an object with three properties, 
+     *    which are also objects:
+     *    - `input` with `left`, `top`, `width`, and `height` properties
+     *    - `calendar` with `width`, and `height` properties
+     *    - `viewport` with `width`, and `height` properties
+     *    Note that `left` and `top` coordinates of the `input` are relative 
+     *    to the viewport and not the document or parent container. The 
+     *    `position` function needs to return an object with `left` and `top`
+     *    properties set to desired coordinates relative to the viewport.
      *  + `labels` (Object) Key-value pair of label identifiers and labels. 
      *    This defaults to English labels, and you can supply a traslated
      *    version of labels in any language. (default: English labels)
@@ -904,6 +914,27 @@
             } else {
               // Calendar must align with left edge
               x = inputX + docOffsetX;
+            }
+
+            if (typeof opts.position === 'function') {
+              var xy = opts.position({
+                input: {
+                  left: inputX,
+                  top: inputY,
+                  width: inputW,
+                  height: inputH
+                },
+                calendar: {
+                  width: calW,
+                  height: calH
+                },
+                viewport: {
+                  width: winW,
+                  height: winH
+                }
+              });
+              x = xy.left + docOffsetX;
+              y = xy.top + docOffsetY;
             }
 
             instance.css({
