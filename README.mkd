@@ -42,6 +42,8 @@ Check out the [demo](http://herdhound.github.com/jquery-dateinput/).
 Installation
 ------------
 
+This plugin is written for jQuery 1.7 and newer.
+
 You can include it into your AMD-based project by requiring it or adding it to
 the list of dependencies. You know the routine if you are going down this road.
 
