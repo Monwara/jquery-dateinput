@@ -13,7 +13,8 @@ designer.
 Some of the key features include:
 
  + Can be used as AMD module with RequireJS.
- + Uses ES5 features (might not work in older browsers).
+ + Uses ES5 features (might not work in older browsers without 
+   [ES5 shim](https://github.com/kriskowal/es5-shim)).
  + Does not use tables to render the calendar cells (web-designer-friendly!).
  + Lightweight (3Kb minified and gzipped).
  + When used as a pop-up widget, it automatically updates the calendar each
