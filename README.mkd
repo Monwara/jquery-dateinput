@@ -228,19 +228,14 @@ Roadmap
 Known issues
 ------------
 
-There are two known issues:
-
- + When using pop-up widget, if the input is focued by clicking into it, the
-   month that is shown is the inital month, and not the one that contains the 
-   selection. It works correctly if keyboard is used to focus the intput.
-   (Fixed in 0.0.2)
- + With `noPast` option, you can still select the past dates. (Fixed 0.0.2)
+There are no known issues at this time.
 
 Bugs
 ----
 
 Report all bugs in the 
 [Github issue tracker](https://github.com/HerdHound/jquery-dateinput/issues).
+Feature requests are welcome, too.
 
 License
 -------
