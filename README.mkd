@@ -6,7 +6,11 @@ Before you go on, this plugin has nothing to do with the similarly named
 of the forks.
 
 The aptly named jQuery dateInput is a [jQuery](http//jquery.com/) calendar
-widget plugin. Some of the key features include:
+widget plugin. It has features that makes both web designers and frontend
+engineers happy, because it was build by a frontend engineer that is also a web
+designer.
+
+Some of the key features include:
 
  + Can be used as AMD module with RequireJS.
  + Uses ES5 features (might not work in older browsers).
@@ -16,6 +20,7 @@ widget plugin. Some of the key features include:
    time user types something into the input field.
  + Keyboard friendly (complete keyboard navigation).
  + strftime-like date formatting.
+ + Easy-to-style table-less markup.
 
 The other not-so-surprising calendar features includes:
 
