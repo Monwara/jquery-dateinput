@@ -125,6 +125,9 @@ Following options are available:
    focused. The inline version creates a new hidden input that replaces the
    original input, and copies `id`, `name`, and `value` attributes from it.
    (default: false)
+ + `arrowsOnly` (Boolean) Use only arrows (instead of Ctrl+arrows) for
+   navigating the pop-up calendar. Note that help text has to be changed
+   manually using the `labels` option. (dafault: false)
  + `noPast` (Boolean) Do not allow selection of dates in the past.  (default:
    false)
  + `startDate` (Date) Date at which to initiate the calendar if the input

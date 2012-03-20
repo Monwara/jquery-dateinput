@@ -472,6 +472,9 @@
      *    is focused. The inline version creates a new hidden input that 
      *    replaces the original input, and copies `id`, `name`, and `value`
      *    attributes from it. (default: false)
+     *  + `arrowsOnly` (Boolean) Use only arrows (instead of Ctrl+arrows) for
+     *    navigating the pop-up calendar. Note that help text has to be 
+     *    changed manually using the `labels` option. (dafault: false)
      *  + `noPast` (Boolean) Do not allow selection of dates in the past. 
      *    (default: false)
      *  + `startDate` (Date) Date at which to initiate the calendar if the 
@@ -580,6 +583,7 @@
           sundayFirst: true,
           offset: 4,
           fadeOut: 200,
+          arrowsOnly: false,
           labels: {
             'ssun': 'S',
             'smon': 'M',
@@ -870,6 +874,12 @@
           $input.after(instance);
 
         } else {
+          if (opts.arrowsOnly) {
+            // Disable autocomplete so that up and down arrows do not
+            // bring up the browser's native autocomplete box
+            $input.attr('autocomplete', 'off');
+          }
+
           $input.on('focus', function(e) {
             // Draw instance and attach to document body
             if (instance) return true;
@@ -984,7 +994,9 @@
 
             // Handle Ctrl+Arrow shortcuts
             function shiftDate(days) {
-              if (e.ctrlKey && !e.shiftKey && !e.altKey && !e.modKey) {
+              if (opts.arrowsOnly || (e.ctrlKey && !e.shiftKey && !e.altKey && !e.modKey)) {
+                e.preventDefault();
+                e.stopPropagation();
                 var d = new Date($input.val());
                 if (d.toString() === 'Invalid Date') {
                   redraw(getToday());
