@@ -38,7 +38,7 @@ The other not-so-surprising calendar features includes:
 Demo
 ----
 
-Check out the [demo](http://herdhound.github.com/jquery-dateinput/).
+Check out the [demo](http://monwara.github.com/jquery-dateinput/).
 
 Installation
 ------------
@@ -53,7 +53,7 @@ Otherwise, just include it as a script tag below jQuery.
 The CSS for the datepicker is _not_ included. I think it's very easy to style,
 so I didn't think it was necessary to include anything. If you want a starting
 point, though, you have a decent CSS in the 
-[demo](http://herdhound.github.com/jquery-dateinput/), so check that out.
+[demo](http://monwara.github.com/jquery-dateinput/), so check that out.
 
 Changelog
 ---------
