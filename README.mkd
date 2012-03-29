@@ -58,6 +58,12 @@ point, though, you have a decent CSS in the
 Changelog
 ---------
 
+ + development
+   - Moved to github.com/Monwara
+   - Inline widget now has 'dateinput-inline' class
+   - Changing the date will trigger `onChange` on the input
+   - Selecting dates from other months will switch the widget to that month
+   - BUGFIX: Sixth row is now generated correctly
  + 0.0.3
    - Added Ctrl + arrow key navigation
    - Added 'help' label
