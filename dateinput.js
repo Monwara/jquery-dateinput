@@ -35,7 +35,7 @@
     var tWeeknameCell = '<span class="dateinput-weekname $SUNDAY">$LABEL</span>';
 
     var tWidget = [
-      '<div class="dateinput-container">',
+      '<div class="dateinput-container $INLINE">',
       '<div class="dateinput-inner">',
 
       '<div class="dateinput-monthbar">',
@@ -74,6 +74,7 @@
     var TODAY_CLASS = 'dateinput-today';
     var SUNDAY_CLASS = 'dateinput-sunday';
     var SEL_CLASS = 'dateinput-selected';
+    var INLINE_CLASS = 'dateinput-inline';
     var WEEK_MAPPINGS = 'ssun smon stue swed sthu sfri ssat'.split(' ');
     var MONTH_MAPPINGS = 'jan feb mar apr may jun jul aug sep oct nov dec'.
       split(' ');
@@ -663,9 +664,10 @@
          *
          * @param {Date} date Date for which to build the calendar
          */
-        function calendarHTML(date) {
+        function calendarHTML(date, inline) {
           var monthLabel = opts.labels[MONTH_MAPPINGS[date.getMonth()]];
           return tWidget.
+            replace('$INLINE', inline ? INLINE_CLASS : '').
             replace('$WEEKNAMES', weekDays).
             replace('$MONTH', monthLabel + ' ' + date.getFullYear()).
             replace('$CALENDAR', buildMonth(
@@ -745,7 +747,7 @@
           } else {
             // Create a new widget instance
             instance = $(
-              calendarHTML(d || date).
+              calendarHTML(d || date, opts.inline).
                 replace('$HELP', opts.inline ? '' : opts.labels.help)
             );
             instance.displayMonth = date.getMonth() + 1;
