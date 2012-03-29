@@ -60,7 +60,7 @@ Changelog
 
  + development
    - Switched to alternative UMD style
- + 0.0.4
+ + 0.0.4 [download](https://github.com/Monwara/jquery-dateinput/zipball/0.0.4)
    - Moved to github.com/Monwara
    - Inline widget now has 'dateinput-inline' class
    - Changing the date will trigger `onChange` on the input
