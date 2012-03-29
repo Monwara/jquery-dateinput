@@ -688,6 +688,7 @@
         function onClick(val) {
           val = dateFormat(val, opts.format, opts.labels);
           $input.val(val);
+          $input.change();
         }
 
         var instance; // existing instance of calendar widget
@@ -781,6 +782,7 @@
               drawCalendar(t);
               selectDate(t);
               $input.val(dateFormat(t, opts.format, opts.labels));
+              $input.change();
               if (blurTimeout) clearTimeout(blurTimeout);
               $input.focus();
             });
