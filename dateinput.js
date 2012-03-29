@@ -3,7 +3,7 @@
  * *jQuery plugin that provides calendar-based date entry widget*
  *
  * @author Monwara LLC / Branko Vukelic <branko@herdhound.com>
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 (function(define) {

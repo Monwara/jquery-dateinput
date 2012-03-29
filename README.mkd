@@ -58,7 +58,7 @@ point, though, you have a decent CSS in the
 Changelog
 ---------
 
- + development
+ + 0.0.4
    - Moved to github.com/Monwara
    - Inline widget now has 'dateinput-inline' class
    - Changing the date will trigger `onChange` on the input
