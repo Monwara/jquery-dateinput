@@ -210,6 +210,7 @@
       noPast = typeof noPast === 'boolean' ? noPast : false;
 
       var i; // index to be used in for loops
+      var n; // spare index for multi-dimensional loops
       var l; // length holders to be used in for loops
 
       // How many days in a month?
@@ -330,6 +331,7 @@
       // days of the next month.
       var lastWeekIdx = weeks.length - 1;
       var daysRemaining = 7 - weeks[lastWeekIdx].length;
+      var nextMonthDay = 0;
       for (i = 1; i <= daysRemaining; i++) {
         weeks[lastWeekIdx].push(
           tOtherMonthCell.
@@ -340,31 +342,31 @@
             replace('$DATE', i).
             replace('$LABEL', i)
         );
+        nextMonthDay = i;
       }
 
       // Fill the calendar up to six weeks
-      (function addMore(weeksRemaining, startDay, idx) {
-        if (!weeksRemaining) return;
+      if (weeks.length <= 6) {
+        
+        for (n = weeks.length; n <= 6; n++) {
+          weeks[n] = [];
 
-        startDay++;
-        weeks[idx] = [];
+          for (i = 0; i < 7; i++) {
+            
+            nextMonthDay++;
 
-        for (i = 0; i < 7; i++) {
-          startDay += i;
-          weeks[idx].push(
-            tOtherMonthCell.
-            replace('$PAST', noPast && isPast(nextY, nextM, i) ? PAST_CLASS : '').
-            replace('$TODAY', isToday(nextY, nextM, i) ? TODAY_CLASS : '').
-            replace('$YEAR', nextY).
-            replace('$MONTH', nextM).
-            replace('$DATE', startDay).
-            replace('$LABEL', startDay)
-          );
+            weeks[n].push(
+              tOtherMonthCell.
+              replace('$PAST', noPast && isPast(nextY, nextM, i) ? PAST_CLASS : '').
+              replace('$TODAY', isToday(nextY, nextM, i) ? TODAY_CLASS : '').
+              replace('$YEAR', nextY).
+              replace('$MONTH', nextM).
+              replace('$DATE', nextMonthDay).
+              replace('$LABEL', nextMonthDay)
+            );
+          }
         }
-
-        addMore(6 - weeks.length, startDay, weeks.length);
-      }(6 - weeks.length, daysRemaining, weeks.length));
-
+      }
 
       // Add sunday classes for each week
       var sundayPos = sundayFirst ? 0 : 6;
