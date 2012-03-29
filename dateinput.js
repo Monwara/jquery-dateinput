@@ -84,6 +84,7 @@
     var LDY = 'lsun lmon ltue lwed lthu lfri lsat'.split(' ');
     var DY = 'sun mon tue wed thu fri sat'.split(' ');
     var DAYMS = 24 * 60 * 60 * 1000;
+    var OTHERMONTH_CLASS = 'dateinput-calendar-othermonth';
 
     // UTILITY FUNCTIONS
     
@@ -776,6 +777,29 @@
               instance.css('display', 'inline-block');
             }
 
+            function swapMonth(dir) {
+              // Get the display year and month, and shift date in `dir` 
+              // direction.
+              (function(newDate) {
+                drawCalendar(newDate);
+              }(shiftMonths(new Date(
+                instance.displayYear, 
+                instance.displayMonth - 1, 
+                1
+              ), dir)));
+
+              selectDate($input.val() ? new Date($input.val()) : null);
+
+              if (typeof opts.monthChange === 'function') {
+                opts.month(newDate.getMonth() + 1, newDate.getFullYear());
+              }
+
+              if (!opts.inline) {
+                clearTimeout(blurTimeout);
+                $input.focus();
+              }
+            }
+
             instance.on('contextmenu', function(e) {
               e.preventDefault();
               e.stopPropagation();
@@ -798,6 +822,10 @@
                 if (blurTimeout) clearTimeout(blurTimeout);
                 $input.focus();
                 return;
+              }
+
+              if ($(this).hasClass(OTHERMONTH_CLASS)) {
+                swapMonth($(this).data('month') > instance.displayMonth ? 1 : -1);      
               }
 
               var cellDate = new Date(
@@ -833,29 +861,8 @@
 
               var $button = $(this);
 
-              // Detremine the direction:
-              var dir = $button.hasClass('dateinput-prevmonth') ? -1 : 1;
+              swapMonth($button.hasClass('dateinput-prevmonth') ? -1 : 1);
               
-              // Get the display year and month, and shift date in `dir` 
-              // direction.
-              (function(newDate) {
-                drawCalendar(newDate);
-              }(shiftMonths(new Date(
-                instance.displayYear, 
-                instance.displayMonth - 1, 
-                1
-              ), dir)));
-
-              selectDate($input.val() ? new Date($input.val()) : null);
-
-              if (typeof opts.monthChange === 'function') {
-                opts.month(newDate.getMonth() + 1, newDate.getFullYear());
-              }
-
-              if (!opts.inline) {
-                clearTimeout(blurTimeout);
-                $input.focus();
-              }
             });
 
           }
