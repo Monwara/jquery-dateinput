@@ -58,6 +58,8 @@ point, though, you have a decent CSS in the
 Changelog
 ---------
 
+ + development
+   - Switched to alternative UMD style
  + 0.0.4
    - Moved to github.com/Monwara
    - Inline widget now has 'dateinput-inline' class
