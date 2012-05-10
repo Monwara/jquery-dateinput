@@ -2,7 +2,7 @@
  * jQuery DateInput
  * *jQuery plugin that provides calendar-based date entry widget*
  *
- * @author Monwara LLC / Branko Vukelic <branko@herdhound.com>
+ * @author Monwara LLC / Branko Vukelic <branko@monwara.com>
  * @version 0.0.4
  */
 
@@ -449,10 +449,10 @@
 
     for (var token in tokens) {
       format = format.replace(token, tokens[token]);
-    };
+    }
 
     return format;
-  };
+  }
 
 
   // MAIN PLUGIN
@@ -723,7 +723,7 @@
           if (item.data('date') != date.getDate()) return;
           item.addClass(SEL_CLASS);
         });
-      };
+      }
 
       var blurTimeout;
 
@@ -884,7 +884,7 @@
         $input = hidden;
 
         // Draw the instance and put it next to hidden input
-        drawCalendar($input.val() ? new Date($input.val()) : null)
+        drawCalendar($input.val() ? new Date($input.val()) : null);
         $input.after(instance);
 
       } else {

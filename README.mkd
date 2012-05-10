@@ -245,7 +245,7 @@ Bugs
 ----
 
 Report all bugs in the 
-[Github issue tracker](https://github.com/HerdHound/jquery-dateinput/issues).
+[Github issue tracker](https://github.com/Monwara/jquery-dateinput/issues).
 Feature requests are welcome, too.
 
 License

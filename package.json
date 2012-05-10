@@ -25,13 +25,13 @@
     "maintainers": [
         {
             "name": "Branko Vukelic",
-            "email": "branko@herdhound.com"
+            "email": "branko@monwara.com"
             "url": "https://github.com/Monwara"
         }
     ],
     "bugs": { 
         "url": "https://github.com/Monwara/jquery-dateinput/issues",
-        "email": "branko@herdhound.com"
+        "email": "branko@monwara.com"
     },
     "demo": "http://monwara.github.com/jquery-dateinput",
     "files": [
