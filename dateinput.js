@@ -175,9 +175,10 @@
    * @return {Date} Shifted date
    */
   function shiftMonths(date, months) {
-    var mon0AD = date.getFullYear() * 12 + (date.getMonth() + 1);
-    var newMon0AD = mon0AD + months;
-    return new Date(~~(newMon0AD / 12), (newMon0AD % 12) - 1, date.getDate());
+    return (function(newDate) {
+      newDate.setMonth(newDate.getMonth() + months);
+      return newDate;
+    })(new Date(date));
   }
 
   /**
