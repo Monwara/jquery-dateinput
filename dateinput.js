@@ -175,6 +175,7 @@
    * @return {Date} Shifted date
    */
   function shiftMonths(date, months) {
+    console.log(date, months);
     return (function(newDate) {
       newDate.setMonth(newDate.getMonth() + months);
       return newDate;
@@ -724,9 +725,6 @@
           if (item.data('date') != date.getDate()) return;
           item.addClass(SEL_CLASS);
         });
-
-        instance.displayYear = date.getFullYear();
-        instance.displayMonth = date.getMonth() + 1;
       }
 
       var blurTimeout;
@@ -750,8 +748,8 @@
           );
 
           // Update instance state
-          instance.displayMonth = d.getMonth() + 1;
-          instance.displayYear = d.getFullYear();
+          instance.data('displayMonth', d.getMonth());
+          instance.data('displayYear', d.getFullYear());
 
         } else {
           // Create a new widget instance
@@ -759,8 +757,8 @@
             calendarHTML(d || date, opts.inline).
               replace('$HELP', opts.inline ? '' : opts.labels.help)
           );
-          instance.displayMonth = date.getMonth() + 1;
-          instance.displayYear = date.getFullYear();
+          instance.data('displayMonth', date.getMonth());
+          instance.data('displayYear', date.getFullYear());
 
           // Give date input widget an ID calculated from input's own id or 
           // name attribute with a -dateinput suffix.
@@ -788,8 +786,8 @@
             (function(newDate) {
               drawCalendar(newDate);
             }(shiftMonths(new Date(
-              instance.displayYear, 
-              instance.displayMonth - 1, 
+              instance.data('displayYear'), 
+              instance.data('displayMonth'), 
               1
             ), dir)));
 
@@ -830,7 +828,7 @@
             }
 
             if ($(this).hasClass(OTHERMONTH_CLASS)) {
-              swapMonth($(this).data('month') > instance.displayMonth ? 1 : -1);      
+              swapMonth($(this).data('month') > instance.data('displayMonth') ? 1 : -1);
             }
 
             var cellDate = new Date(
