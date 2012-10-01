@@ -58,7 +58,8 @@ point, though, you have a decent CSS in the
 Changelog
 ---------
 
- + development
+ + 0.0.5
+   - Fixed issue where switching months stopped working after selecting a date
    - Switched to alternative UMD style
  + 0.0.4 [download](https://github.com/Monwara/jquery-dateinput/zipball/0.0.4)
    - Moved to github.com/Monwara
