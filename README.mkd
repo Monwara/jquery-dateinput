@@ -58,10 +58,10 @@ point, though, you have a decent CSS in the
 Changelog
 ---------
 
- + 0.0.5
+ + 0.0.5 [download](https://github.com/Monwara/jquery-dateinput/zipball/0.0.5)
    - Fixed issue where switching months stopped working after selecting a date
    - Switched to alternative UMD style
- + 0.0.4 [download](https://github.com/Monwara/jquery-dateinput/zipball/0.0.4)
+ + 0.0.4 
    - Moved to github.com/Monwara
    - Inline widget now has 'dateinput-inline' class
    - Changing the date will trigger `onChange` on the input
